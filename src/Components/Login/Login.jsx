@@ -1,7 +1,10 @@
 import Lottie from "lottie-react";
 import loginLottiedata from "../../assets/lottie/login.json";
+import AuthContext from "../ContextProvider/AuthContext";
+import { useContext } from "react";
 
 const Login = () => {
+  const { signInUser } = useContext(AuthContext);
   // ********************Handle submit function*************************
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -9,6 +12,14 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
     console.log(email, password);
+    signInUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        console.error("Error signing in:", error);
+      });
   };
   return (
     <div>
