@@ -1,8 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../Layouts/MainLayout";
-import Home from "../Components/Home/Home";
-import Register from "../Components/Register/Register";
-import Login from "../Components/Login/Login";
+import Home from "../pages/Home/Home/Home";
+import Register from "../pages/Home/Register/Register";
+import Login from "../pages/Home/Login/Login";
+import JobDetails from "../pages/JobDetails/JobDetails";
 
 const router = createBrowserRouter([
   {
@@ -12,6 +13,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+      },
+      {
+        path: "/apply/:id",
+        element: <JobDetails></JobDetails>,
       },
       {
         path: "/register",
