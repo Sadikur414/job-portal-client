@@ -1,14 +1,16 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../../../assets/logos/logo-96.png";
 import { useContext } from "react";
 import AuthContext from "../../../Components/ContextProvider/AuthContext";
 
 function Navbar() {
+  const navigate = useNavigate();
   const { user, logOut } = useContext(AuthContext);
   const handleLogOut = () => {
     logOut()
       .then(() => {
         console.log("User logged out successfully");
+        navigate("/");
       })
       .catch((error) => {
         console.error("Error logging out:", error);
@@ -51,12 +53,12 @@ function Navbar() {
             </li>
             <li>
               <NavLink
-                to="/services"
+                to="/myapplication"
                 className={({ isActive }) =>
                   isActive ? "text-primary font-bold" : ""
                 }
               >
-                Services
+                MyApplication
               </NavLink>
             </li>
           </ul>
@@ -84,12 +86,12 @@ function Navbar() {
           </li>
           <li>
             <NavLink
-              to="/"
+              to="/myapplication"
               className={({ isActive }) =>
                 isActive ? "text-primary font-bold" : ""
               }
             >
-              Services
+              MyApplication
             </NavLink>
           </li>
           <li>
